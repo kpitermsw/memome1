@@ -1,5 +1,7 @@
 package com.example.admin.memome1;
 
+import android.content.Context;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,5 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         //setContentView(R.layout.activity_main);
         setContentView(lLayout);
+
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
+                | PowerManager.ACQUIRE_CAUSES_WAKEUP
+                //| PowerManager.
+                | PowerManager.ON_AFTER_RELEASE, "MyWakeLock");
+        wakeLock.acquire();
+
     }
 }
